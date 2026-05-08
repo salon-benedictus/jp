@@ -169,12 +169,13 @@
                     
                     <!-- プロフィール写真（自動クロスフェード） -->
                     <!-- 指定された3枚の画像ファイルをHTMLと同じフォルダに置いてください -->
-                    <div class="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full border-4 border-white shadow-md overflow-hidden relative bg-brand-surface sticky top-32">
+                    <!-- スクロール追従を解除するため、sticky top-32 を削除しました -->
+                    <div class="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full border-4 border-white shadow-md overflow-hidden relative bg-brand-surface">
                         <img id="profile-image" src="./0DAFED47-FF04-42A6-AC8C-1DB1DFFA85BC.jpg" alt="ノザワアリア" class="w-full h-full object-cover object-center transition-opacity duration-1000">
                     </div>
 
                     <div class="flex-grow text-left mt-4 md:mt-0">
-                        <h3 class="text-2xl text-gray-800 mb-1 font-bold">野澤 知子 / ノザワアリア</h3>
+                        <h3 class="text-2xl text-gray-800 mb-1 font-bold">ノザワアリア</h3>
                         <p class="text-sm text-brand-sky mb-8 font-english tracking-wider border-b border-gray-200 pb-4 font-medium">Aria Nozawa / Healer, Shaman</p>
                         
                         <div class="space-y-6 text-gray-600 leading-loose text-sm md:text-base text-justify">
@@ -236,7 +237,7 @@
 
                 <!-- コンサルテーション -->
                 <div class="mb-16">
-                    <h3 class="text-xl text-gray-800 mb-8 border-b border-gray-200 pb-3 text-center md:text-left font-bold">
+                    <h3 class="text-xl text-brand-sky mb-8 border-b border-brand-sky/30 pb-2 inline-block font-bold">
                         ■ コンサルテーション
                     </h3>
                     <div class="bg-brand-surface rounded-sm p-6 border border-transparent hover:border-gray-200">
@@ -249,7 +250,7 @@
 
                 <!-- ヒーリング・エネルギーワーク -->
                 <div>
-                    <h3 class="text-xl text-gray-800 mb-8 border-b border-gray-200 pb-3 text-center md:text-left font-bold">
+                    <h3 class="text-xl text-brand-sky mb-8 border-b border-brand-sky/30 pb-2 inline-block font-bold">
                         ■ ヒーリング・エネルギーワーク
                     </h3>
                     
