@@ -8,8 +8,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Noto Sans JP の標準的な太さ（300, 400, 500, 700）を読み込む -->
-    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Montserrat:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&family=Parisienne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Montserrat:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&family=Parisienne&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,7 +29,7 @@
                         'logo-beth': ['"Beth Ellen"', 'cursive'], /* 指定の手書き風 */
                         'logo-script': ['"Parisienne"', 'cursive'], /* サブ用 */
                         'english': ['"Montserrat"', 'sans-serif'],
-                        'sans': ['"Noto Sans JP"', 'sans-serif'], /* 日本語のデフォルトをNoto Sans JPに固定 */
+                        'sans': ['"Noto Sans JP"', 'sans-serif'], /* Noto Sans JPに固定 */
                     }
                 }
             }
@@ -99,7 +98,7 @@
                 <a href="#" onclick="navigate('school'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="school">SCHOOL</a>
                 <a href="#" onclick="navigate('guide'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="guide">GUIDE</a>
                 <a href="#" onclick="navigate('contact'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="contact">CONTACT</a>
-                <a href="https://ameblo.jp/" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 border border-gray-300 text-gray-500 rounded-full hover:border-brand-sky hover:text-brand-sky transition-colors text-xs">BLOG</a>
+                <a href="https://ameblo.jp/salon-benedictus/" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 border border-gray-300 text-gray-500 rounded-full hover:border-brand-sky hover:text-brand-sky transition-colors text-xs">BLOG</a>
             </nav>
 
             <!-- Mobile Menu Button -->
@@ -117,7 +116,7 @@
                 <a href="#" onclick="navigate('school'); return false;" class="nav-link py-2" data-target="school">SCHOOL</a>
                 <a href="#" onclick="navigate('guide'); return false;" class="nav-link py-2" data-target="guide">GUIDE</a>
                 <a href="#" onclick="navigate('contact'); return false;" class="nav-link py-2" data-target="contact">CONTACT</a>
-                <a href="https://ameblo.jp/" target="_blank" rel="noopener noreferrer" class="py-2 text-brand-sky font-bold">BLOG (Ameba)</a>
+                <a href="https://ameblo.jp/salon-benedictus/" target="_blank" rel="noopener noreferrer" class="py-2 text-brand-sky font-bold">BLOG (Ameba)</a>
             </div>
         </nav>
     </header>
@@ -161,7 +160,7 @@
         <section id="profile" class="section-content pt-16 pb-24 bg-brand-surface">
             <div class="max-w-5xl mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="font-english text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase font-light">Profile</h2>
+                    <h2 class="font-english font-light text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase">Profile</h2>
                     <p class="text-sm text-gray-400 tracking-widest font-bold">プロフィール</p>
                 </div>
 
@@ -328,21 +327,166 @@
                             <ul class="list-disc list-inside space-y-2">
                                 <li>セッションは完全予約制となっております。</li>
                                 <li>オンライン（Zoom等）または遠隔でのセッションを中心に行っております。</li>
-                                <li>ご予約および決済は、専用のオンラインストア（STORES）にて承っております。</li>
+                                <li>決済方法等につきましては、お申し込み後に詳細をご案内いたします。</li>
                             </ul>
                         </div>
                     </div>
                     <div class="border border-gray-200 bg-white">
                         <div class="px-6 py-4 border-b border-gray-100 text-lg text-gray-800 bg-gray-50/50 font-bold">特定商取引法に関する表記</div>
                         <div class="p-6 text-sm text-gray-500">
-                            <p>[オンラインストア(STORES)側の特商法ページへリンク、またはここに記載します]</p>
+                            <p>当サロンの特定商取引法に基づく表示につきましては、<a href="#" onclick="navigate('tokusho'); return false;" class="text-brand-sky hover:underline font-bold">こちらのページ</a>をご確認ください。</p>
                         </div>
                     </div>
                     <div class="border border-gray-200 bg-white">
                         <div class="px-6 py-4 border-b border-gray-100 text-lg text-gray-800 bg-gray-50/50 font-bold">プライバシーポリシー</div>
                         <div class="p-6 text-sm text-gray-500">
-                            <p>[個人情報保護方針のテキストがここに入ります。]</p>
+                            <p>当サロンの個人情報保護方針につきましては、<a href="#" onclick="navigate('privacy'); return false;" class="text-brand-sky hover:underline font-bold">こちらのプライバシーポリシー</a>をご確認ください。</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TOKUSHO (特定商取引法) SECTION ==================== -->
+        <section id="tokusho" class="section-content pt-16 pb-24 bg-brand-surface">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-english font-light text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase">Terms & Conditions</h2>
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">特定商取引法に基づく表示</p>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 shadow-sm border border-gray-100">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-600 border-collapse">
+                            <tbody>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">販売業者名</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">サロン・ベネディクトゥス</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">代表責任者</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">ノザワアリア</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">所在地</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">※ご請求時に遅滞なく開示いたします</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">電話番号</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">※ご請求時に遅滞なく開示いたします</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">メールアドレス</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">salonbenedictus@gmail.com</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">お申込み方法</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">規定のお申込みフォーム・ご連絡窓口をご利用ください。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">お支払方法</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">指定の日本国内銀行口座へのお振込みのみとさせていただきます。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">お申込みの有効期限</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">お申込みの有効期限は、それぞれのお申込みフォームまたはご案内でご確認ください。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">お引渡時期</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">別途ご案内する各コース・セッションの開始日前に、メール等にてご案内させていただきます。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">コース料金・役務の対価</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top leading-relaxed">原則として各メニューごとの価格に基づきます。各料金につきましては、お問い合わせ時に個別にご案内させていただいております。<br>役務の対価につきましては内容によって異なります。ホームページに記載されていないものにつきましては、役務対価はお客様のご要望による個別オーダーとなりますので、特定商取引法第11条但し書きの規定により、ご相談により金額が定まりましたら直ちに、または、お客様のご請求により遅滞なく、電子メールにてご提供させていただきます。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">お支払い時期</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top leading-relaxed">受講料・セッション料金は、ご案内する規定期日までにお支払いください。ご入金が確認できない場合は、お申し込みをキャンセルさせていただくことがございます。<br>役務のお申込みにつきましては、お客様とご相談の上、ワーク内容・お支払日を確定させていただきます。確定日までにお支払いがない場合、お申込みをキャンセルさせていただくことがございます。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">ご入金後のご返金</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top leading-relaxed">ご入金と同時にノザワアリアによる各種の「準備ワーク」等が始動します。そのため、コース受講料や各種セッション、講習におけるご入金後のご返金は、原則としてお受けできませんので、あらかじめご了承のうえでお申し込みくださいますようお願い申し上げます。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">個人情報の取扱</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">当サロンのプライバシーポリシーをご参照ください。</td>
+                                </tr>
+                                <tr>
+                                    <th class="w-1/3 py-4 pr-4 font-bold text-gray-800 align-top bg-gray-50/30">倫理・行動規範</th>
+                                    <td class="w-2/3 py-4 pl-4 align-top">サロン・ベネディクトゥスの行動規範・倫理規約に基づき誠実に運営いたします。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-12 text-center">
+                        <button onclick="navigate('guide')" class="border border-brand-sky text-brand-sky px-8 py-2 rounded-sm hover:bg-brand-sky hover:text-white transition duration-300 font-bold text-sm">ご利用案内に戻る</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PRIVACY POLICY SECTION ==================== -->
+        <section id="privacy" class="section-content pt-16 pb-24 bg-brand-surface">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-english font-light text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase">Privacy Policy</h2>
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">プライバシーポリシー</p>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 shadow-sm border border-gray-100">
+                    <div class="space-y-8 text-gray-600 leading-loose text-sm md:text-base">
+                        <p>サロン・ベネディクトゥス（以下、「当サロン」という。）は、ユーザーの個人情報について以下のとおりプライバシーポリシー（以下、「本ポリシー」という。）を定めます。</p>
+
+                        <div>
+                            <h3 class="font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">1. 個人情報の取得方法</h3>
+                            <p>当サロンは、ユーザーがセッション、講習のお申し込みやお問い合わせをする際に、氏名、メールアドレスなどの個人情報をお尋ねすることがあります。</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">2. 個人情報を収集・利用する目的</h3>
+                            <p>当サロンが個人情報を収集・利用する目的は、以下のとおりです。</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>当サロンのセッション・講習の提供・運営のため</li>
+                                <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
+                                <li>ユーザーが利用中のサービスの新着情報、更新情報、キャンペーン等及び当サロンが提供する他のサービスの案内のメールを送付するため</li>
+                                <li>上記の利用目的に付随する目的</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">3. 個人情報の第三者提供</h3>
+                            <p>当サロンは、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+                                <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+                                <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">4. ヒーリング・セッションに関する免責事項</h3>
+                            <p>当サロンで提供するヒーリングやセッション等は医療行為ではありません。精神的疾病や現在投薬治療を受けている方につきましては、お断りする場合がございます。また、セッションによる体感や効果は人それぞれであり、確実な効果を保証するものではございません。お受けになる際は、ご自身の自己責任のもとでお願いいたします。</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">5. プライバシーポリシーの変更</h3>
+                            <p>本ポリシーの内容は、法令その他本ポリシーに別段の定めのある事項を除いて、ユーザーに通知することなく、変更することができるものとします。変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">6. お問い合わせ窓口</h3>
+                            <p>本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。</p>
+                            <p class="mt-2">
+                                屋号：サロン・ベネディクトゥス<br>
+                                代表者：ノザワアリア<br>
+                                Eメールアドレス：salonbenedictus@gmail.com
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 text-center">
+                        <button onclick="navigate('guide')" class="border border-brand-sky text-brand-sky px-8 py-2 rounded-sm hover:bg-brand-sky hover:text-white transition duration-300 font-bold text-sm">ご利用案内に戻る</button>
                     </div>
                 </div>
             </div>
@@ -356,41 +500,29 @@
                     <p class="text-sm text-gray-400 tracking-widest font-bold">ご予約・お問い合わせ</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- 左：STORES予約への誘導 -->
-                    <div class="bg-white p-8 md:p-10 shadow-sm border border-gray-100 text-center flex flex-col justify-center">
-                        <div class="w-16 h-16 mx-auto bg-brand-sky/10 rounded-full flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-brand-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                        </div>
-                        <h3 class="text-xl text-gray-800 mb-4 font-bold">セッションのご予約・ご購入</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed mb-8">
-                            当サロンのセッションは、オンラインストア（STORES）にてご予約・決済を承っております。<br>
-                            ご希望のメニューを選択し、お手続きにお進みください。
-                        </p>
-                        <a href="https://stores.jp/" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-sky text-white px-8 py-4 rounded-sm hover:bg-opacity-90 transition duration-300 font-english tracking-widest text-sm shadow-md font-bold">
-                            STORES で予約する
-                        </a>
-                    </div>
-
-                    <!-- 右：事前のお問い合わせフォーム -->
-                    <div class="bg-white p-8 md:p-10 shadow-sm border border-gray-100">
-                        <h3 class="text-xl text-gray-800 mb-6 text-center border-b border-gray-100 pb-4 font-bold">事前のお問い合わせ</h3>
-                        <p class="text-xs text-gray-500 mb-6 text-center">
-                            どのメニューを選べばよいか迷っている方や、講習に関するご質問などはこちらからお気軽にお送りください。
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white p-8 md:p-12 shadow-sm border border-gray-100">
+                        <h3 class="text-xl text-gray-800 mb-6 text-center border-b border-gray-100 pb-4 font-bold">ご予約・お問い合わせ</h3>
+                        <p class="text-xs text-gray-500 mb-8 text-center leading-relaxed">
+                            セッションのお申し込みや、どのメニューを選べばよいか迷っている方など、<br>まずはこちらのフォームよりお気軽にご連絡ください。<br>
+                            内容を確認次第、折り返しご連絡させていただきます。
                         </p>
                         
-                        <form onsubmit="event.preventDefault(); alert('デモ用のため送信されません。');" class="space-y-5">
+                        <form id="contact-form" class="space-y-6">
                             <div>
-                                <input type="text" class="w-full border-b border-gray-300 focus:border-brand-sky outline-none py-2 text-sm bg-transparent placeholder-gray-400" placeholder="お名前">
+                                <label for="form-name" class="block text-sm text-gray-600 mb-1">お名前 <span class="text-red-500">*</span></label>
+                                <input type="text" id="form-name" class="w-full border-b border-gray-300 focus:border-brand-sky outline-none py-2 text-sm bg-transparent placeholder-gray-300" placeholder="例：山田 花子" required>
                             </div>
                             <div>
-                                <input type="email" class="w-full border-b border-gray-300 focus:border-brand-sky outline-none py-2 text-sm bg-transparent placeholder-gray-400" placeholder="メールアドレス">
+                                <label for="form-email" class="block text-sm text-gray-600 mb-1">メールアドレス <span class="text-red-500">*</span></label>
+                                <input type="email" id="form-email" class="w-full border-b border-gray-300 focus:border-brand-sky outline-none py-2 text-sm bg-transparent placeholder-gray-300" placeholder="例：info@example.com" required>
                             </div>
                             <div>
-                                <textarea rows="4" class="w-full border border-gray-300 rounded-sm focus:border-brand-sky outline-none p-3 text-sm bg-transparent placeholder-gray-400 mt-2" placeholder="お問い合わせ内容"></textarea>
+                                <label for="form-message" class="block text-sm text-gray-600 mb-1">お問い合わせ内容 <span class="text-red-500">*</span></label>
+                                <textarea id="form-message" rows="6" class="w-full border border-gray-300 rounded-sm focus:border-brand-sky outline-none p-3 text-sm bg-transparent placeholder-gray-300 mt-1" placeholder="ご希望のメニュー、ご相談内容などをご記入ください。" required></textarea>
                             </div>
-                            <div class="text-center pt-2">
-                                <button type="submit" class="border border-brand-text text-brand-text px-8 py-2 rounded-sm hover:bg-brand-text hover:text-white transition duration-300 tracking-widest text-sm w-full font-bold">送信する</button>
+                            <div class="text-center pt-4">
+                                <button type="button" onclick="sendEmail()" class="border border-brand-text text-brand-text px-10 py-3 rounded-sm hover:bg-brand-text hover:text-white transition duration-300 tracking-widest text-sm w-full font-bold">メールソフトを起動する</button>
                             </div>
                         </form>
                     </div>
@@ -405,6 +537,11 @@
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="font-logo-beth text-3xl mb-4 opacity-90 tracking-normal">Benedictus</h2>
             <p class="font-english tracking-[0.2em] text-xs mb-8 text-gray-400">HEAL YOUR SELF, HEAL THE WORLD</p>
+            <div class="space-x-4 text-xs text-gray-400 mb-6">
+                <!-- リンクを追加 -->
+                <a href="#" onclick="navigate('tokusho'); return false;" class="hover:text-white transition">特定商取引法に関する表記</a>
+                <a href="#" onclick="navigate('privacy'); return false;" class="hover:text-white transition">プライバシーポリシー</a>
+            </div>
             <p class="text-xs text-gray-500">&copy; 2026 Benedictus. All rights reserved.</p>
         </div>
     </footer>
@@ -456,12 +593,8 @@
             const profileImage = document.getElementById('profile-image');
             if (!profileImage) return;
 
-            // 5秒ごとに画像を切り替える
             setInterval(() => {
-                // まず画像を透明にしてフェードアウト
                 profileImage.style.opacity = 0;
-                
-                // フェードアウトのトランジション(1000ms)が終わる頃に画像ソースを変更し、再びフェードイン
                 setTimeout(() => {
                     currentImageIndex = (currentImageIndex + 1) % profileImages.length;
                     profileImage.src = './' + profileImages[currentImageIndex];
@@ -470,9 +603,30 @@
             }, 5000);
         }
 
-        // ページ読み込み完了時にスライドショーを開始
         document.addEventListener('DOMContentLoaded', startProfileImageSlideshow);
 
+        // 文字化け対策用のメール送信処理
+        function sendEmail() {
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const message = document.getElementById('form-message').value;
+
+            if (!name || !email || !message) {
+                alert('必須項目をすべて入力してください。');
+                return;
+            }
+
+            const to = 'salonbenedictus@gmail.com';
+            const subject = '【サロン・ベネディクトゥス】ホームページからのお問い合わせ';
+
+            let body = "お名前:\n" + name + "\n\n";
+            body += "メールアドレス:\n" + email + "\n\n";
+            body += "お問い合わせ内容:\n" + message;
+
+            const mailtoLink = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+            window.location.href = mailtoLink;
+        }
     </script>
 </body>
 </html>
