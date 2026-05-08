@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benedictus | ヒーリングサロン＆スクール</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Noto Sans JP の標準的な太さ（300, 400, 500, 700）を読み込む -->
+    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Montserrat:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&family=Parisienne&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sky: '#4A90E2',    /* 上品で晴れやかなフレンチブルー */
+                            grass: '#7CB342',  /* 爽やかな緑 */
+                            bg: '#ffffff',     /* クリーンな白 */
+                            surface: '#f9fafa',/* ほんのり青みがかった薄いグレー */
+                            text: '#2c3e50',   /* 洗練された濃いネイビーグレー */
+                        }
+                    },
+                    fontFamily: {
+                        'logo-beth': ['"Beth Ellen"', 'cursive'], /* 指定の手書き風 */
+                        'logo-script': ['"Parisienne"', 'cursive'], /* サブ用 */
+                        'english': ['"Montserrat"', 'sans-serif'],
+                        'sans': ['"Noto Sans JP"', 'sans-serif'], /* 日本語のデフォルトをNoto Sans JPに固定 */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* カスタムスタイリング */
+        body {
+            background-color: #ffffff;
+            color: #2c3e50;
+        }
+        .section-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .section-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-link.active-nav {
+            color: #4A90E2;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-link.active-nav::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #7CB342;
+        }
+        /* ヒーローセクションの背景画像設定（ローカル環境確認用） */
+        .hero-image-bg {
+            background-image: url('./811FB13C-0A4E-41E7-A5DE-AC8CF907E750.jpg'); 
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        /* テキストの影を少し強めに（白文字を読ませるため） */
+        .text-shadow-strong {
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen font-sans font-normal">
+
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="cursor-pointer flex items-baseline gap-2" onclick="navigate('home')">
+                <h1 class="font-logo-beth text-3xl md:text-4xl text-brand-sky font-semibold tracking-normal">Benedictus</h1>
+                <span class="font-logo-script text-xl text-brand-grass hidden md:inline ml-1">Salon</span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex space-x-6 text-sm font-english tracking-wider text-gray-500 items-center">
+                <a href="#" onclick="navigate('home'); return false;" class="nav-link active-nav hover:text-brand-sky transition-colors" data-target="home">HOME</a>
+                <a href="#" onclick="navigate('profile'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="profile">PROFILE</a>
+                <a href="#" onclick="navigate('sessions'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="sessions">SESSIONS</a>
+                <a href="#" onclick="navigate('school'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="school">SCHOOL</a>
+                <a href="#" onclick="navigate('guide'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="guide">GUIDE</a>
+                <a href="#" onclick="navigate('contact'); return false;" class="nav-link hover:text-brand-sky transition-colors" data-target="contact">CONTACT</a>
+                <a href="https://ameblo.jp/" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 border border-gray-300 text-gray-500 rounded-full hover:border-brand-sky hover:text-brand-sky transition-colors text-xs">BLOG</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-text text-2xl focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-100 absolute w-full shadow-md">
+            <div class="flex flex-col px-4 py-4 space-y-4 text-center text-sm font-english tracking-wider text-gray-600">
+                <a href="#" onclick="navigate('home'); return false;" class="nav-link py-2" data-target="home">HOME</a>
+                <a href="#" onclick="navigate('profile'); return false;" class="nav-link py-2" data-target="profile">PROFILE</a>
+                <a href="#" onclick="navigate('sessions'); return false;" class="nav-link py-2" data-target="sessions">SESSIONS</a>
+                <a href="#" onclick="navigate('school'); return false;" class="nav-link py-2" data-target="school">SCHOOL</a>
+                <a href="#" onclick="navigate('guide'); return false;" class="nav-link py-2" data-target="guide">GUIDE</a>
+                <a href="#" onclick="navigate('contact'); return false;" class="nav-link py-2" data-target="contact">CONTACT</a>
+                <a href="https://ameblo.jp/" target="_blank" rel="noopener noreferrer" class="py-2 text-brand-sky font-bold">BLOG (Ameba)</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+        <!-- ==================== HOME SECTION ==================== -->
+        <section id="home" class="section-content active">
+            
+            <!-- 全面画像 -->
+            <div class="relative w-full h-[70vh] min-h-[500px] flex items-center justify-center text-center overflow-hidden">
+                <!-- 背景画像レイヤー -->
+                <div class="absolute inset-0 hero-image-bg brightness-[1.15] saturate-110"></div>
+                <!-- 文字を見やすくするためのごく薄いオーバーレイ -->
+                <div class="absolute inset-0 bg-black/5"></div>
+                
+                <div class="relative z-10 px-4 max-w-4xl w-full">
+                    <!-- ロゴ -->
+                    <h2 class="font-logo-beth text-5xl md:text-7xl text-white mb-6 tracking-normal text-shadow-strong">Benedictus</h2>
+                    <p class="font-english text-white tracking-[0.3em] text-sm md:text-base inline-block py-2 px-6 border-t border-b border-white/70 text-shadow-strong">
+                        HEAL YOUR SELF, HEAL THE WORLD
+                    </p>
+                </div>
+            </div>
+
+            <!-- Welcome Message -->
+            <div class="max-w-3xl mx-auto px-4 py-24 text-center">
+                <h3 class="text-2xl md:text-3xl text-brand-text mb-8 font-bold">ありのままの自分を取り戻す場所</h3>
+                <p class="text-gray-500 leading-loose md:text-lg">
+                    サロン・ベネディクトゥスは、あなたが本来持つ輝きを取り戻し、<br class="hidden md:block">
+                    より自由で豊かな人生を歩むためのヒーリングサロンです。<br>
+                    <br>
+                    エネルギーワークや各種リーディングを通じて、<br class="hidden md:block">
+                    心と体、そして魂の深い部分からの癒しと解放をサポートいたします。
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== PROFILE SECTION ==================== -->
+        <section id="profile" class="section-content pt-16 pb-24 bg-brand-surface">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-english text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase font-light">Profile</h2>
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">プロフィール</p>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 rounded-sm flex flex-col md:flex-row gap-10 items-center md:items-start shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] relative">
+                    
+                    <!-- プロフィール写真（自動クロスフェード） -->
+                    <div class="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full border-4 border-white shadow-md overflow-hidden relative bg-brand-surface sticky top-32">
+                        <img id="profile-image" src="./0DAFED47-FF04-42A6-AC8C-1DB1DFFA85BC.jpg" alt="ノザワアリア" class="w-full h-full object-cover object-center transition-opacity duration-1000">
+                    </div>
+
+                    <div class="flex-grow text-left mt-4 md:mt-0">
+                        <h3 class="text-2xl text-gray-800 mb-1 font-bold">ノザワアリア</h3>
+                        <p class="text-sm text-brand-sky mb-8 font-english tracking-wider border-b border-gray-200 pb-4 font-medium">Aria Nozawa / Healer, Shaman</p>
+                        
+                        <div class="space-y-6 text-gray-600 leading-loose text-sm md:text-base text-justify">
+                            <p>和歌山県生まれ。</p>
+                            <p>中学の夏休みに、戦没慰霊で訪れたパプア・ニューギニアで大きな霊的体験と覚醒が起こる。生き残りの方や慰霊団の和尚人様の側で鎮魂を学んだのが、私のシャーマン・ライトワーカーとしての原点です。</p>
+                            <p>以降、霊的に敏感になり、急激な体調の変化が起き倒れたり、不思議な体験も起きました。幸い周りに理解してくれる方が多くいる環境でした。進学時に、霊的ではなく普通の世界で生きる決意を抱いて、家族の熱望と、金銭的にも、奇跡的に全ての準備が整い、外国へ音楽の勉強に集中しました。</p>
+                            <p>音楽を通じて、色々な国で素晴らしい師匠と、共に音楽を奏でる同僚達に出会い、その瞬間だけに集中する喜びを知りました。舞台上で歌手達が最高に輝くのをサポートする仕事は、日本人を活かした天職だったと思います。関わった作品からは古代からの叡智を受け継ぎ、演奏する場所は聖地との繋がりでした。光と闇が色濃く見えるフランスに約10年行き来しました。</p>
+                            <p>2010年に全てが廻らない感覚になり帰国。直後に311の震災。自分がこの世の中で何も役に立たない無価値感、競争の世界で他人を信頼できず、評価や承認欲求の中で喘ぎ、本質を省みない、ストレス過多状態で仕事を続けていました。</p>
+                            <p>音を生み出す時は完全に自由な状態で魂からの喜びを奏でたい、と2020年2月に音楽界を完全引退。</p>
+                            <p>プライベートでは、不妊治療の副作用による体調不良、母親との断絶、特殊な家系の問題の再浮上が重なり、最低な自分、何も出来ない、身体が動かない状態が数年続きました。</p>
+                            <p>帰国する頃から霊的に開いて来ているのを自分で感じていて、また預言もあり、この世界に近づきたくない、と抵抗していました。</p>
+                            <p>Leaves Instituteのシャーマン養成があると知ったのは、その後随分経ってからで、「霊的な問題に対処できる様になる」という文章に惹かれ決意しました。怖い体験を何度もしてトラウマがある私は、4次元の対応ワークが愛と調和がベースで出来るのが信じられませんでした。地球が進化・アセンションしているのだと体現できました。</p>
+                            <p>2017年に特別養子縁組にて生後4日目の赤ちゃんを預かりました。多くの方々の協力を得ながら、1年経過して家族(戸籍も霊的にも)になりました。</p>
+                            <p>私の人生は今でも波瀾万丈だと思います。</p>
+                            <p>幸せも、苦しみも、愛も知り、恐怖も、絶望も。その振り幅が大きい。森羅万象の一つ一つを、私自身が惹きつけて、体験したかったのだと納得できます。</p>
+                            <p>その度に覚醒(気づき)や学びを頂き、感謝と生きる喜びで満たされます。この宇宙で、うそのない自分(本当の自分)と対話する。覚醒の際は大きなショックを受ける事もあって、ヒーリング(癒し)なしでは前に進めないです。</p>
+                            <p>2023年、ライトワークの途中に現地が有事になりました。慰霊が誓願の一つですが、人間の私はこの状況にとても混乱しました。魂の方が知っていて、顕在意識ではわからないのに、そのタイミングで行き、現地で過去生の自分と対話し、当時約束したことを思い出し契約を解除しました。アセンションが進んでいる今、預言さえも変わりうることを知り、現地でのセルフワークは、過去の約束(束縛)から自由になりました。</p>
+                            <p>受け取ったこの叡智は、おそらく多くの方々に必要だと思います。わたしたちは、自由に生きて良いのです。</p>
+                            <p>この世の中が、1人でも多くの人が、幸せで、豊かに満たされ自由な人が増え続けてくれたら、うれしい。<br>どんな環境や状況にいても、自分の中(心)は自由であり、地球に生きる私たちの意志が優先されるのが宇宙のルールです。</p>
+                            <p>ご提供するワークや技術は、元々はライトワークや、自分の誓願の為に必要な技術として学びましたが、星周りの後押しもあり、ご提供をさせて頂くことになりました。</p>
+                            <p>悩みや説明のつかない問題、自分に向き合うことが1人では出来ない時に、あなたの望む方向へ、お役に立てたらと思います。</p>
+                            <p>お1人お1人の幸せは違っていい。本当の自分に繋がることができれば、それが何かをわたしたちは全て知っています。<br>その為に必要な癒しやサポート、そしてガイドをさせて頂く事が私の願いであり、喜びです。私もお仕事させて頂くことで、生きる力を頂いています。</p>
+                            <p>日々、私の願いも自由に変化し続けています。ご提供させて頂く内容も、その時々に納得するものをジャンルに関わらず、技術向上に努めています。</p>
+                            <p>出会って下さる方々へのご縁に感謝を込めて</p>
+                            <p class="text-right text-lg font-bold mt-4">ノザワアリア</p>
+
+                            <!-- 資格・経歴リスト -->
+                            <div class="mt-12 bg-gray-50 p-6 rounded-sm border border-gray-100">
+                                <h4 class="text-brand-sky font-bold mb-4 border-b border-gray-200 pb-2">Qualifications & Training</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <p class="font-bold text-gray-700">Leaves Institute (UK)</p>
+                                        <ul class="list-disc list-inside ml-2 mt-1">
+                                            <li>2019-ヒーリングディプロマコース修了</li>
+                                            <li>2020/2025 地球進化学&ライトワーク覚醒コース修了</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-gray-700">琉球キネシオロジー</p>
+                                        <ul class="list-disc list-inside ml-2 mt-1">
+                                            <li>2025 認定シルバー・フォーチューンキネシオロジスト</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SESSIONS SECTION ==================== -->
+        <section id="sessions" class="section-content pt-16 pb-24">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-english font-light text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase">Sessions</h2>
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">個人セッション</p>
+                </div>
+
+                <div class="mb-16">
+                    <h3 class="text-xl text-gray-800 mb-8 border-b border-gray-200 pb-3 text-center md:text-left font-bold">
+                        ヒーリング・エネルギーワーク
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="border border-gray-200 rounded-sm p-8 hover:border-brand-sky transition-colors bg-white">
+                            <h4 class="text-lg text-brand-sky mb-2 font-bold">お任せセッション</h4>
+                            <p class="text-xs text-gray-400 mb-4 font-english uppercase tracking-widest">Custom Energy Session</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                お話を伺った上で、その時のあなたに最も必要なエネルギーワークを組み合わせて行うオーダーメイドのセッションです。何を申し込んでいいか分からない方にもおすすめです。
+                            </p>
+                        </div>
+                        <div class="border border-gray-200 rounded-sm p-8 hover:border-brand-grass transition-colors bg-white">
+                            <h4 class="text-lg text-brand-grass mb-2 font-bold">霊障解消ワーク</h4>
+                            <p class="text-xs text-gray-400 mb-4 font-english uppercase tracking-widest">Spiritual Clearance</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                原因不明の不調や、繰り返す不運など、見えない領域からの影響（霊障）が疑われる場合に。安全な方法で障りを解消し、本来の健やかな状態へと導きます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl text-gray-800 mb-8 border-b border-gray-200 pb-3 text-center md:text-left font-bold">
+                        リーディング・カウンセリング
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-brand-surface rounded-sm p-6 border border-transparent hover:border-gray-200">
+                            <h4 class="text-md text-gray-800 mb-3 font-bold">コンサルテーション</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">ワークを受ける前の事前相談や、方向性を整理したい方に。現状を紐解き、必要なアプローチをご提案します。</p>
+                        </div>
+                        <div class="bg-brand-surface rounded-sm p-6 border border-transparent hover:border-gray-200">
+                            <h4 class="text-md text-gray-800 mb-3 font-bold">星読みセッション</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">西洋占星術を用い、あなたが生まれ持った資質や人生のテーマ、現在の星回りからのメッセージを読み解きます。</p>
+                        </div>
+                        <div class="bg-brand-surface rounded-sm p-6 border border-transparent hover:border-gray-200">
+                            <h4 class="text-md text-gray-800 mb-3 font-bold">タロットセッション</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">具体的なお悩みや選択に対するヒントをカードから引き出します。潜在意識の声を可視化するツールとしても有用です。</p>
+                        </div>
+                        <div class="bg-brand-surface rounded-sm p-6 border border-transparent hover:border-gray-200">
+                            <h4 class="text-md text-gray-800 mb-3 font-bold">オラクルカードセッション</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">高次元からの愛に溢れたメッセージを受け取ります。前向きな一歩を踏み出したい時、背中を押してほしい時に。</p>
+                        </div>
+                        <div class="bg-brand-surface rounded-sm p-6 border border-transparent hover:border-gray-200 lg:col-span-2">
+                            <h4 class="text-md text-gray-800 mb-3 font-bold">潜在意識カウンセリングセッション</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">現実を創り出している「潜在意識」にフォーカスし、無意識のブロックや思い込みに気づき、解放していくための深い対話のセッションです。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SCHOOL SECTION ==================== -->
+        <section id="school" class="section-content pt-16 pb-24 bg-brand-surface">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-english font-light text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase">School</h2>
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">講習</p>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 shadow-sm border-t-4 border-brand-sky">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl text-gray-800 font-bold">陰陽師講習</h3>
+                    </div>
+                    <div class="space-y-6 text-gray-600 leading-relaxed text-sm md:text-base">
+                        <p>
+                            ご自身やご家族、あるいはクライアントのために環境を整え、運気を好転させる「陰陽師」としての技術を学ぶ講習です。
+                        </p>
+                        <p>
+                            古来より伝わる叡智を現代に活用し、結界の張り方や邪気払い、エネルギーのバランス調整などを習得します。プロとして活動の幅を広げたい方はもちろん、日常をより快適に過ごしたい方にもご受講いただけます。
+                        </p>
+                        <div class="bg-gray-50 p-6 mt-6 border border-gray-100">
+                            <p class="text-sm font-bold text-gray-700 mb-2">【受講条件・詳細】</p>
+                            <p class="text-sm text-gray-500">内容の詳細や受講条件につきましては、事前コンサルテーションにて個別にご説明とご提案をさせていただきます。まずはお気軽にお問い合わせください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== GUIDE SECTION ==================== -->
+        <section id="guide" class="section-content pt-16 pb-24">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-english font-light text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase">Guide</h2>
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">ご利用案内</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="border border-gray-200 bg-white">
+                        <div class="px-6 py-4 border-b border-gray-100 text-lg text-gray-800 bg-gray-50/50 font-bold">ご利用案内</div>
+                        <div class="p-6 text-sm text-gray-600 leading-relaxed">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>セッションは完全予約制となっております。</li>
+                                <li>オンライン（Zoom等）または遠隔でのセッションを中心に行っております。</li>
+                                <li>ご予約および決済は、専用のオンラインストア（STORES）にて承っております。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 bg-white">
+                        <div class="px-6 py-4 border-b border-gray-100 text-lg text-gray-800 bg-gray-50/50 font-bold">特定商取引法に関する表記</div>
+                        <div class="p-6 text-sm text-gray-500">
+                            <p>[オンラインストア(STORES)側の特商法ページへリンク、またはここに記載します]</p>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 bg-white">
+                        <div class="px-6 py-4 border-b border-gray-100 text-lg text-gray-800 bg-gray-50/50 font-bold">プライバシーポリシー</div>
+                        <div class="p-6 text-sm text-gray-500">
+                            <p>[個人情報保護方針のテキストがここに入ります。]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section id="contact" class="section-content pt-16 pb-24 bg-brand-surface">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-english font-light text-3xl text-brand-sky tracking-[0.2em] mb-2 uppercase">Reservation</h2>
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">ご予約・お問い合わせ</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 左：STORES予約への誘導 -->
+                    <div class="bg-white p-8 md:p-10 shadow-sm border border-gray-100 text-center flex flex-col justify-center">
+                        <div class="w-16 h-16 mx-auto bg-brand-sky/10 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-brand-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <h3 class="text-xl text-gray-800 mb-4 font-bold">セッションのご予約・ご購入</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-8">
+                            当サロンのセッションは、オンラインストア（STORES）にてご予約・決済を承っております。<br>
+                            ご希望のメニューを選択し、お手続きにお進みください。
+                        </p>
+                        <a href="https://stores.jp/" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-sky text-white px-8 py-4 rounded-sm hover:bg-opacity-90 transition duration-300 font-english tracking-widest text-sm shadow-md font-bold">
+                            STORES で予約する
+                        </a>
+                    </div>
+
+                    <!-- 右：事前のお問い合わせフォーム -->
+                    <div class="bg-white p-8 md:p-10 shadow-sm border border-gray-100">
+                        <h3 class="text-xl text-gray-800 mb-6 text-center border-b border-gray-100 pb-4 font-bold">事前のお問い合わせ</h3>
+                        <p class="text-xs text-gray-500 mb-6 text-center">
+                            どのメニューを選べばよいか迷っている方や、講習に関するご質問などはこちらからお気軽にお送りください。
+                        </p>
+                        
+                        <form onsubmit="event.preventDefault(); alert('デモ用のため送信されません。');" class="space-y-5">
+                            <div>
+                                <input type="text" class="w-full border-b border-gray-300 focus:border-brand-sky outline-none py-2 text-sm bg-transparent placeholder-gray-400" placeholder="お名前">
+                            </div>
+                            <div>
+                                <input type="email" class="w-full border-b border-gray-300 focus:border-brand-sky outline-none py-2 text-sm bg-transparent placeholder-gray-400" placeholder="メールアドレス">
+                            </div>
+                            <div>
+                                <textarea rows="4" class="w-full border border-gray-300 rounded-sm focus:border-brand-sky outline-none p-3 text-sm bg-transparent placeholder-gray-400 mt-2" placeholder="お問い合わせ内容"></textarea>
+                            </div>
+                            <div class="text-center pt-2">
+                                <button type="submit" class="border border-brand-text text-brand-text px-8 py-2 rounded-sm hover:bg-brand-text hover:text-white transition duration-300 tracking-widest text-sm w-full font-bold">送信する</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-text text-white py-12 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-logo-beth text-3xl mb-4 opacity-90 tracking-normal">Benedictus</h2>
+            <p class="font-english tracking-[0.2em] text-xs mb-8 text-gray-400">HEAL YOUR SELF, HEAL THE WORLD</p>
+            <p class="text-xs text-gray-500">&copy; 2026 Benedictus. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ナビゲーション処理
+        function navigate(targetId) {
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.dataset.target === targetId) {
+                    link.classList.add('active-nav');
+                } else {
+                    link.classList.remove('active-nav');
+                }
+            });
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // プロフィール写真自動切り替え（スライドショー）処理
+        const profileImages = [
+            '0DAFED47-FF04-42A6-AC8C-1DB1DFFA85BC.jpg',
+            '8EDA687A-3CB4-4FE0-BE4A-A2154FD5D258.jpg',
+            'CFB1B874-4516-493B-904E-1272DD7D901A.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        function startProfileImageSlideshow() {
+            const profileImage = document.getElementById('profile-image');
+            if (!profileImage) return;
+
+            // 5秒ごとに画像を切り替える
+            setInterval(() => {
+                // まず画像を透明にしてフェードアウト
+                profileImage.style.opacity = 0;
+                
+                // フェードアウトのトランジション(1000ms)が終わる頃に画像ソースを変更し、再びフェードイン
+                setTimeout(() => {
+                    currentImageIndex = (currentImageIndex + 1) % profileImages.length;
+                    profileImage.src = './' + profileImages[currentImageIndex];
+                    profileImage.style.opacity = 1;
+                }, 1000);
+            }, 5000);
+        }
+
+        // ページ読み込み完了時にスライドショーを開始
+        document.addEventListener('DOMContentLoaded', startProfileImageSlideshow);
+
+    </script>
+</body>
+</html>
